@@ -12,7 +12,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <img src={tbLogo} alt="TB Real Estate Logo" className="h-12 w-auto" />
+            <img src={tbLogo} alt="TB Real Estate Logo" className="h-16 w-auto" />
             <div>
               <h1 className="font-heading text-xl font-bold text-foreground">TB Real Estate</h1>
               <p className="text-xs text-muted-foreground hidden sm:block">Premium Real Estate</p>
@@ -21,16 +21,16 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
-            <a href="#properties" className="text-foreground/80 hover:text-primary transition-colors font-medium">
+            <a href="#properties" className="text-foreground hover:text-primary transition-colors font-bold">
               Properties
             </a>
-            <a href="#about" className="text-foreground/80 hover:text-primary transition-colors font-medium">
+            <a href="#about" className="text-foreground hover:text-primary transition-colors font-bold">
               About Us
             </a>
-            <a href="#services" className="text-foreground/80 hover:text-primary transition-colors font-medium">
+            <a href="#services" className="text-foreground hover:text-primary transition-colors font-bold">
               Services
             </a>
-            <a href="#contact" className="text-foreground/80 hover:text-primary transition-colors font-medium">
+            <a href="#contact" className="text-foreground hover:text-primary transition-colors font-bold">
               Contact
             </a>
           </nav>

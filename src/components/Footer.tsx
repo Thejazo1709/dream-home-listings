@@ -1,4 +1,5 @@
-import { Home, Facebook, Twitter, Instagram, Linkedin, Youtube, ArrowUp } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, Youtube, ArrowUp } from "lucide-react";
+import tbLogo from "@/assets/tb-logo.png";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -13,11 +14,9 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
-                <Home className="w-5 h-5 text-primary-foreground" />
-              </div>
+              <img src={tbLogo} alt="TB Real Estate Logo" className="h-12 w-auto rounded-lg" />
               <div>
-                <h3 className="font-heading text-xl font-bold">PrimeNest</h3>
+                <h3 className="font-heading text-xl font-bold">TB Real Estate</h3>
                 <p className="text-xs text-primary-foreground/60">Premium Real Estate</p>
               </div>
             </div>
@@ -87,7 +86,7 @@ const Footer = () => {
         <div className="container mx-auto px-4 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-primary-foreground/60 text-sm text-center md:text-left">
-              © 2024 PrimeNest. All rights reserved. | Privacy Policy | Terms of Service
+              © 2024 TB Real Estate. All rights reserved. | Privacy Policy | Terms of Service
             </p>
             <button
               onClick={scrollToTop}

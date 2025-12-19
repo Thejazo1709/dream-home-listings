@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Home, Phone, Building2, Menu, X } from "lucide-react";
+import { Phone, Building2, Menu, X } from "lucide-react";
 import { useState } from "react";
+import tbLogo from "@/assets/tb-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,11 +12,9 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-soft group-hover:shadow-glow transition-all duration-300">
-              <Home className="w-5 h-5 text-primary-foreground" />
-            </div>
+            <img src={tbLogo} alt="TB Real Estate Logo" className="h-12 w-auto" />
             <div>
-              <h1 className="font-heading text-xl font-bold text-foreground">PrimeNest</h1>
+              <h1 className="font-heading text-xl font-bold text-foreground">TB Real Estate</h1>
               <p className="text-xs text-muted-foreground hidden sm:block">Premium Real Estate</p>
             </div>
           </a>

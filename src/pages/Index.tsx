@@ -3,6 +3,9 @@ import HeroSection from "@/components/HeroSection";
 import FeaturedProperties from "@/components/FeaturedProperties";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ContactSection from "@/components/ContactSection";
+import EMICalculator from "@/components/EMICalculator";
+import PropertyComparison from "@/components/PropertyComparison";
+import FeedbackSection from "@/components/FeedbackSection";
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 
@@ -10,10 +13,10 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>PrimeNest - Premium Real Estate | Buy 1BHK to 4BHK, Villas & Duplexes</title>
-        <meta name="description" content="Find your dream home with PrimeNest. Explore premium 1BHK, 2BHK, 3BHK, 4BHK apartments, villas, and duplexes across major cities. Expert guidance & verified properties." />
-        <meta name="keywords" content="real estate, property for sale, 1BHK, 2BHK, 3BHK, 4BHK, villa, duplex, independent house, Bangalore, Mumbai, home buying" />
-        <link rel="canonical" href="https://primenest.com" />
+        <title>TB Real Estate - Premium Properties | Buy 1BHK to 5BHK, Villas & Duplexes Across India</title>
+        <meta name="description" content="Find your dream home with TB Real Estate. Explore premium apartments, villas, and duplexes across Bangalore, Mumbai, Delhi, Hyderabad, Chennai, and more." />
+        <meta name="keywords" content="real estate, property for sale, 1BHK, 2BHK, 3BHK, 4BHK, villa, duplex, Bangalore, Mumbai, Delhi, Hyderabad, Chennai" />
+        <link rel="canonical" href="https://tbrealestate.com" />
       </Helmet>
       
       <div className="min-h-screen bg-background">
@@ -21,7 +24,10 @@ const Index = () => {
         <main>
           <HeroSection />
           <FeaturedProperties />
+          <EMICalculator />
+          <PropertyComparison />
           <WhyChooseUs />
+          <FeedbackSection />
           <ContactSection />
         </main>
         <Footer />

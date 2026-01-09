@@ -8,20 +8,23 @@ import { properties } from "@/data/properties";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, SlidersHorizontal, MapPin } from "lucide-react";
+import { getStates } from "@/data/properties";
 
 const Properties = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedType, setSelectedType] = useState("All");
-  const [priceRange, setPriceRange] = useState("All");
+  const [selectedState, setSelectedState] = useState("All");
 
-  const propertyTypes = ["All", "1 BHK", "2 BHK", "3 BHK", "4 BHK Villa", "Duplex", "Independent House"];
-  const priceRanges = ["All", "Under ₹50 Lac", "₹50 Lac - ₹1 Cr", "₹1 Cr - ₹2 Cr", "Above ₹2 Cr"];
+  const propertyTypes = ["All", "1 BHK", "2 BHK", "3 BHK", "4 BHK", "4 BHK Villa", "5 BHK Villa", "Duplex", "Independent House"];
+  const states = ["All", ...getStates()];
 
   const filteredProperties = properties.filter((property) => {
     const matchesSearch = property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         property.location.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesType = selectedType === "All" || property.type === selectedType;
-    return matchesSearch && matchesType;
+                         property.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         property.city.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesType = selectedType === "All" || property.type.includes(selectedType.replace(" Villa", ""));
+    const matchesState = selectedState === "All" || property.state === selectedState;
+    return matchesSearch && matchesType && matchesState;
   });
 
   return (
@@ -63,13 +66,12 @@ const Properties = () => {
 
           {/* Filters */}
           <section className="py-8 border-b border-border/50">
-            <div className="container mx-auto px-4 lg:px-8">
+            <div className="container mx-auto px-4 lg:px-8 space-y-4">
               <div className="flex flex-wrap items-center gap-4">
                 <div className="flex items-center gap-2 text-muted-foreground">
                   <SlidersHorizontal className="w-5 h-5" />
-                  <span className="font-medium">Filter:</span>
+                  <span className="font-medium">Type:</span>
                 </div>
-                
                 <div className="flex flex-wrap gap-2">
                   {propertyTypes.map((type) => (
                     <Button
@@ -80,6 +82,25 @@ const Properties = () => {
                       className="rounded-full"
                     >
                       {type}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="flex items-center gap-2 text-muted-foreground">
+                  <MapPin className="w-5 h-5" />
+                  <span className="font-medium">State:</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {states.map((state) => (
+                    <Button
+                      key={state}
+                      variant={selectedState === state ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setSelectedState(state)}
+                      className="rounded-full"
+                    >
+                      {state}
                     </Button>
                   ))}
                 </div>

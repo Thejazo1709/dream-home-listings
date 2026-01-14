@@ -5,6 +5,7 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import ContactSection from "@/components/ContactSection";
 import EMICalculator from "@/components/EMICalculator";
 import PropertyComparison from "@/components/PropertyComparison";
+import PropertyMap from "@/components/PropertyMap";
 import FeedbackSection from "@/components/FeedbackSection";
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
@@ -24,6 +25,7 @@ const Index = () => {
         <main>
           <HeroSection />
           <FeaturedProperties />
+          <PropertyMap />
           <EMICalculator />
           <PropertyComparison />
           <WhyChooseUs />

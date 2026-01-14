@@ -14,7 +14,246 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      feedback: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          is_approved: boolean | null
+          message: string
+          name: string
+          property_id: string | null
+          rating: number
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          is_approved?: boolean | null
+          message: string
+          name: string
+          property_id?: string | null
+          rating: number
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          is_approved?: boolean | null
+          message?: string
+          name?: string
+          property_id?: string | null
+          rating?: number
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      inquiries: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          inquiry_type: string | null
+          message: string | null
+          name: string
+          phone: string | null
+          property_id: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          inquiry_type?: string | null
+          message?: string | null
+          name: string
+          phone?: string | null
+          property_id: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          inquiry_type?: string | null
+          message?: string | null
+          name?: string
+          phone?: string | null
+          property_id?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          full_name: string | null
+          id: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      property_listings: {
+        Row: {
+          amenities: string[] | null
+          area: number
+          bathrooms: number
+          bedrooms: number
+          city: string
+          created_at: string
+          description: string | null
+          floor_details: string | null
+          furnishing: string | null
+          id: string
+          images: string[] | null
+          location: string
+          parking: string | null
+          price: number
+          state: string
+          status: string | null
+          title: string
+          type: string
+          updated_at: string
+          user_id: string
+          vastu_compliant: boolean | null
+        }
+        Insert: {
+          amenities?: string[] | null
+          area: number
+          bathrooms: number
+          bedrooms: number
+          city: string
+          created_at?: string
+          description?: string | null
+          floor_details?: string | null
+          furnishing?: string | null
+          id?: string
+          images?: string[] | null
+          location: string
+          parking?: string | null
+          price: number
+          state: string
+          status?: string | null
+          title: string
+          type: string
+          updated_at?: string
+          user_id: string
+          vastu_compliant?: boolean | null
+        }
+        Update: {
+          amenities?: string[] | null
+          area?: number
+          bathrooms?: number
+          bedrooms?: number
+          city?: string
+          created_at?: string
+          description?: string | null
+          floor_details?: string | null
+          furnishing?: string | null
+          id?: string
+          images?: string[] | null
+          location?: string
+          parking?: string | null
+          price?: number
+          state?: string
+          status?: string | null
+          title?: string
+          type?: string
+          updated_at?: string
+          user_id?: string
+          vastu_compliant?: boolean | null
+        }
+        Relationships: []
+      }
+      saved_properties: {
+        Row: {
+          created_at: string
+          id: string
+          property_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          property_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          property_id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      scheduled_visits: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string | null
+          name: string
+          phone: string
+          property_id: string
+          property_title: string
+          status: string | null
+          user_id: string | null
+          visit_date: string
+          visit_time: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message?: string | null
+          name: string
+          phone: string
+          property_id: string
+          property_title: string
+          status?: string | null
+          user_id?: string | null
+          visit_date: string
+          visit_time: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string | null
+          name?: string
+          phone?: string
+          property_id?: string
+          property_title?: string
+          status?: string | null
+          user_id?: string | null
+          visit_date?: string
+          visit_time?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

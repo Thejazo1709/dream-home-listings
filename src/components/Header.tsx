@@ -3,6 +3,7 @@ import { Phone, Building2, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import tbLogo from "@/assets/tb-logo.png";
+import UserMenu from "@/components/UserMenu";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,10 +43,13 @@ const Header = () => {
               <Phone className="w-4 h-4" />
               +91 98765 43210
             </Button>
-            <Button variant="hero" size="default">
-              <Building2 className="w-4 h-4" />
-              List Property
-            </Button>
+            <Link to="/list-property">
+              <Button variant="hero" size="default">
+                <Building2 className="w-4 h-4" />
+                List Property
+              </Button>
+            </Link>
+            <UserMenu />
           </div>
 
           {/* Mobile Menu Button */}
@@ -73,10 +77,12 @@ const Header = () => {
               <Link to="/contact" className="text-foreground hover:text-primary transition-colors font-medium py-2" onClick={() => setIsMenuOpen(false)}>
                 Contact
               </Link>
-              <Button variant="hero" className="mt-2">
-                <Building2 className="w-4 h-4" />
-                List Property
-              </Button>
+              <Link to="/list-property" onClick={() => setIsMenuOpen(false)}>
+                <Button variant="hero" className="w-full mt-2">
+                  <Building2 className="w-4 h-4" />
+                  List Property
+                </Button>
+              </Link>
             </nav>
           </div>
         )}

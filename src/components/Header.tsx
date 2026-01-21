@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Phone, Building2, Menu, X } from "lucide-react";
+import { Phone, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import tbLogo from "@/assets/tb-logo.png";
@@ -43,12 +43,6 @@ const Header = () => {
               <Phone className="w-4 h-4" />
               +91 98765 43210
             </Button>
-            <Link to="/list-property">
-              <Button variant="hero" size="default">
-                <Building2 className="w-4 h-4" />
-                List Property
-              </Button>
-            </Link>
             <UserMenu />
           </div>
 
@@ -76,12 +70,6 @@ const Header = () => {
               </Link>
               <Link to="/contact" className="text-foreground hover:text-primary transition-colors font-medium py-2" onClick={() => setIsMenuOpen(false)}>
                 Contact
-              </Link>
-              <Link to="/list-property" onClick={() => setIsMenuOpen(false)}>
-                <Button variant="hero" className="w-full mt-2">
-                  <Building2 className="w-4 h-4" />
-                  List Property
-                </Button>
               </Link>
             </nav>
           </div>

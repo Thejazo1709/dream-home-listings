@@ -3,7 +3,6 @@ import HeroSection from "@/components/HeroSection";
 import FeaturedProperties from "@/components/FeaturedProperties";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ContactSection from "@/components/ContactSection";
-import EMICalculator from "@/components/EMICalculator";
 import PropertyComparison from "@/components/PropertyComparison";
 import PropertyMap from "@/components/PropertyMap";
 import FeedbackSection from "@/components/FeedbackSection";
@@ -26,7 +25,6 @@ const Index = () => {
           <HeroSection />
           <FeaturedProperties />
           <PropertyMap />
-          <EMICalculator />
           <PropertyComparison />
           <WhyChooseUs />
           <FeedbackSection />

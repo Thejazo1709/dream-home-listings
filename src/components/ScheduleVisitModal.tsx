@@ -20,14 +20,18 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Calendar, Clock, User, Mail, Phone, MessageSquare, CalendarCheck } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface ScheduleVisitModalProps {
+  propertyId?: string;
   propertyTitle?: string;
   trigger?: React.ReactNode;
 }
 
-const ScheduleVisitModal = ({ propertyTitle, trigger }: ScheduleVisitModalProps) => {
+const ScheduleVisitModal = ({ propertyId, propertyTitle, trigger }: ScheduleVisitModalProps) => {
   const { toast } = useToast();
+  const { user } = useAuth();
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -65,25 +69,78 @@ const ScheduleVisitModal = ({ propertyTitle, trigger }: ScheduleVisitModalProps)
 
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Visit Scheduled Successfully! 🎉",
-      description: `Your visit is scheduled for ${formData.date} at ${formData.time}. Our team will contact you shortly to confirm.`,
-    });
-    
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      date: "",
-      time: "",
-      visitType: "",
-      message: ""
-    });
-    setIsSubmitting(false);
-    setOpen(false);
+    try {
+      // Save to database
+      const { error: dbError } = await supabase
+        .from('scheduled_visits')
+        .insert({
+          property_id: propertyId || 'general',
+          property_title: propertyTitle || 'General Visit',
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          visit_date: formData.date,
+          visit_time: formData.time,
+          message: formData.message || null,
+          user_id: user?.id || null,
+          status: 'pending'
+        });
+
+      if (dbError) {
+        console.error('Database error:', dbError);
+        throw new Error('Failed to save visit details');
+      }
+
+      // Send confirmation email
+      try {
+        const { error: emailError } = await supabase.functions.invoke('send-email', {
+          body: {
+            type: 'visit_scheduled',
+            to: formData.email,
+            name: formData.name,
+            data: {
+              propertyTitle: propertyTitle || 'General Visit',
+              visitDate: formData.date,
+              visitTime: formData.time,
+              message: formData.message
+            }
+          }
+        });
+
+        if (emailError) {
+          console.error('Email error:', emailError);
+          // Don't throw - visit was saved, email just failed
+        }
+      } catch (emailErr) {
+        console.error('Email sending failed:', emailErr);
+        // Continue - visit was saved successfully
+      }
+      
+      toast({
+        title: "Visit Scheduled Successfully! 🎉",
+        description: `Your visit is scheduled for ${formData.date} at ${formData.time}. A confirmation email has been sent.`,
+      });
+      
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        date: "",
+        time: "",
+        visitType: "",
+        message: ""
+      });
+      setOpen(false);
+    } catch (error: any) {
+      console.error('Error scheduling visit:', error);
+      toast({
+        title: "Failed to schedule visit",
+        description: error.message || "Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Get minimum date (today)

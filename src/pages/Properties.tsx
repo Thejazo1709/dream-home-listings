@@ -15,7 +15,7 @@ const Properties = () => {
   const [selectedType, setSelectedType] = useState("All");
   const [selectedState, setSelectedState] = useState("All");
 
-  const propertyTypes = ["All", "1 BHK", "2 BHK", "3 BHK", "4 BHK", "4 BHK Villa", "5 BHK Villa", "Duplex", "Independent House"];
+  const propertyTypes = ["All", "1 BHK", "2 BHK", "3 BHK", "4 BHK", "4 BHK Villa", "5 BHK Villa", "Duplex"];
   const states = ["All", ...getStates()];
 
   const filteredProperties = properties.filter((property) => {

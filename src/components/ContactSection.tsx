@@ -2,9 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/contexts/AuthContext";
 
 const ContactSection = () => {
   const { toast } = useToast();
+  const { user } = useAuth();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -13,13 +17,61 @@ const ContactSection = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Inquiry Submitted Successfully!",
-      description: "Our team will contact you within 24 hours.",
-    });
-    setFormData({ name: "", email: "", phone: "", propertyType: "", message: "" });
+    setIsSubmitting(true);
+
+    try {
+      // Save to inquiries table
+      const { error: dbError } = await supabase
+        .from('inquiries')
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || null,
+          property_id: formData.propertyType || 'general-inquiry',
+          inquiry_type: 'consultation',
+          message: formData.message || null,
+          user_id: user?.id || null
+        });
+
+      if (dbError) {
+        console.error('Database error:', dbError);
+        throw new Error('Failed to save inquiry');
+      }
+
+      // Send confirmation email
+      try {
+        await supabase.functions.invoke('send-email', {
+          body: {
+            type: 'inquiry',
+            to: formData.email,
+            name: formData.name,
+            data: {
+              subject: `Property Interest: ${formData.propertyType || 'General'}`,
+              message: formData.message
+            }
+          }
+        });
+      } catch (emailErr) {
+        console.error('Email sending failed:', emailErr);
+      }
+
+      toast({
+        title: "Inquiry Submitted Successfully!",
+        description: "Our team will contact you within 24 hours. A confirmation email has been sent.",
+      });
+      setFormData({ name: "", email: "", phone: "", propertyType: "", message: "" });
+    } catch (error: any) {
+      console.error('Error submitting inquiry:', error);
+      toast({
+        title: "Failed to submit inquiry",
+        description: error.message || "Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -58,8 +110,8 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Email Us</h4>
-                  <p className="text-muted-foreground">contact@primenest.com</p>
-                  <p className="text-muted-foreground">sales@primenest.com</p>
+                  <p className="text-muted-foreground">info@tbrealestate.com</p>
+                  <p className="text-muted-foreground">sales@tbrealestate.com</p>
                 </div>
               </div>
 
@@ -158,7 +210,6 @@ const ContactSection = () => {
                   <option value="4bhk">4 BHK Apartment</option>
                   <option value="villa">Villa</option>
                   <option value="duplex">Duplex</option>
-                  <option value="independent">Independent House</option>
                 </select>
               </div>
 
@@ -175,9 +226,9 @@ const ContactSection = () => {
                 />
               </div>
 
-              <Button type="submit" variant="hero" size="xl" className="w-full btn-shine">
+              <Button type="submit" variant="hero" size="xl" className="w-full btn-shine" disabled={isSubmitting}>
                 <Send className="w-5 h-5" />
-                Submit Inquiry
+                {isSubmitting ? "Submitting..." : "Submit Inquiry"}
               </Button>
             </form>
           </div>

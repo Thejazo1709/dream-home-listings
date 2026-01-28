@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { MessageSquare, Star, Send, Quote } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface Testimonial {
   id: string;
@@ -48,7 +50,7 @@ const testimonials: Testimonial[] = [
     name: "Amit Patel",
     location: "Delhi NCR",
     rating: 4,
-    comment: "Great service and transparent dealings. The EMI calculator helped me plan my finances perfectly. Bought a beautiful 2BHK in Noida. Thank you, TB Real Estate!",
+    comment: "Great service and transparent dealings. The comparison tool made decision-making so much easier. Bought a beautiful 2BHK in Noida. Thank you, TB Real Estate!",
     propertyType: "2 BHK Apartment",
     avatar: "AP"
   },
@@ -67,7 +69,7 @@ const testimonials: Testimonial[] = [
     location: "Pune, Maharashtra",
     rating: 5,
     comment: "Excellent team that understands customer needs. They showed me properties exactly matching my requirements. Closed my deal in record time!",
-    propertyType: "Independent House",
+    propertyType: "Villa",
     avatar: "VS"
   },
   {
@@ -83,18 +85,19 @@ const testimonials: Testimonial[] = [
 
 const FeedbackSection = () => {
   const { toast } = useToast();
+  const { user } = useAuth();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    rating: "",
     propertyType: "",
     feedback: ""
   });
   const [hoveredRating, setHoveredRating] = useState(0);
   const [selectedRating, setSelectedRating] = useState(0);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!formData.name || !formData.email || !selectedRating || !formData.feedback) {
@@ -106,20 +109,68 @@ const FeedbackSection = () => {
       return;
     }
 
-    toast({
-      title: "Thank you for your feedback!",
-      description: "We appreciate you taking the time to share your experience.",
-    });
-    
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      rating: "",
-      propertyType: "",
-      feedback: ""
-    });
-    setSelectedRating(0);
+    setIsSubmitting(true);
+
+    try {
+      // Save to database
+      const { error: dbError } = await supabase
+        .from('feedback')
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          rating: selectedRating,
+          message: formData.feedback,
+          property_id: formData.propertyType || null,
+          user_id: user?.id || null,
+          is_approved: false
+        });
+
+      if (dbError) {
+        console.error('Database error:', dbError);
+        throw new Error('Failed to save feedback');
+      }
+
+      // Send confirmation email
+      try {
+        await supabase.functions.invoke('send-email', {
+          body: {
+            type: 'feedback',
+            to: formData.email,
+            name: formData.name,
+            data: {
+              rating: selectedRating,
+              message: formData.feedback
+            }
+          }
+        });
+      } catch (emailErr) {
+        console.error('Email sending failed:', emailErr);
+        // Continue - feedback was saved successfully
+      }
+
+      toast({
+        title: "Thank you for your feedback!",
+        description: "We appreciate you taking the time to share your experience.",
+      });
+      
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        propertyType: "",
+        feedback: ""
+      });
+      setSelectedRating(0);
+    } catch (error: any) {
+      console.error('Error submitting feedback:', error);
+      toast({
+        title: "Failed to submit feedback",
+        description: error.message || "Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -232,7 +283,6 @@ const FeedbackSection = () => {
                       <SelectItem value="4bhk">4 BHK Apartment</SelectItem>
                       <SelectItem value="villa">Villa</SelectItem>
                       <SelectItem value="duplex">Duplex</SelectItem>
-                      <SelectItem value="independent">Independent House</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -282,9 +332,9 @@ const FeedbackSection = () => {
                 />
               </div>
 
-              <Button type="submit" variant="hero" className="w-full">
+              <Button type="submit" variant="hero" className="w-full" disabled={isSubmitting}>
                 <Send className="w-4 h-4 mr-2" />
-                Submit Feedback
+                {isSubmitting ? "Submitting..." : "Submit Feedback"}
               </Button>
             </form>
           </CardContent>

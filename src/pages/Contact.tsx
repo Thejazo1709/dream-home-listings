@@ -14,6 +14,8 @@ import {
   MessageCircle,
   Send
 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/contexts/AuthContext";
 
 const contactInfo = [
   {
@@ -40,6 +42,7 @@ const contactInfo = [
 
 const Contact = () => {
   const { toast } = useToast();
+  const { user } = useAuth();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -53,16 +56,58 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      // Save to inquiries table
+      const { error: dbError } = await supabase
+        .from('inquiries')
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || null,
+          property_id: 'contact-form',
+          inquiry_type: 'contact',
+          message: `${formData.subject ? `Subject: ${formData.subject}\n\n` : ''}${formData.message}`,
+          user_id: user?.id || null
+        });
 
-    toast({
-      title: "Message Sent Successfully!",
-      description: "Our team will get back to you within 24 hours.",
-    });
+      if (dbError) {
+        console.error('Database error:', dbError);
+        throw new Error('Failed to save inquiry');
+      }
 
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
-    setIsSubmitting(false);
+      // Send confirmation email
+      try {
+        await supabase.functions.invoke('send-email', {
+          body: {
+            type: 'inquiry',
+            to: formData.email,
+            name: formData.name,
+            data: {
+              subject: formData.subject,
+              message: formData.message
+            }
+          }
+        });
+      } catch (emailErr) {
+        console.error('Email sending failed:', emailErr);
+      }
+
+      toast({
+        title: "Message Sent Successfully!",
+        description: "Our team will get back to you within 24 hours.",
+      });
+
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+    } catch (error: any) {
+      console.error('Error submitting contact form:', error);
+      toast({
+        title: "Failed to send message",
+        description: error.message || "Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -166,14 +211,13 @@ const Contact = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-foreground mb-2">
-                          Phone Number *
+                          Phone Number
                         </label>
                         <Input
                           type="tel"
                           placeholder="+91 98765 43210"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          required
                         />
                       </div>
                       <div>

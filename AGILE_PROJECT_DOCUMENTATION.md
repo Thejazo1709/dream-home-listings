@@ -388,40 +388,207 @@ Traditional real estate platforms face several challenges:
 
 ## 9. Sprint Progress
 
-### Sprint 1: Foundation Setup ✅ COMPLETED
-**Goal:** Platform structure and core pages
-- ✅ Header, Footer, Navigation
-- ✅ Home, About, Contact, Services pages
-- ✅ Routing and responsive layout
+---
 
-### Sprint 2: Property Features ✅ COMPLETED
-**Goal:** Property listing and filtering
-- ✅ Property listing page with filtering
-- ✅ Property detail pages with galleries
-- ✅ Search functionality
+### Sprint 1 (Week 1): Foundation Setup ✅ COMPLETED
 
-### Sprint 3: User Features ✅ COMPLETED
-**Goal:** Authentication and user interactions
-- ✅ User authentication (signup/login)
-- ✅ Saved properties feature
-- ✅ Visit scheduling
-- ✅ Inquiry forms
-- ✅ Feedback system
+**Previous Sprint Reference:**
+This was the initial sprint of the project. The team conducted requirement gathering, technology stack finalization, and project environment setup before commencing development.
 
-### Sprint 4: Enhancement & Polish 🔄 CURRENT
-**Goal:** Bug fixes, optimization, documentation
-- ✅ Property comparison tool
-- ✅ UI/UX improvements
-- 🔄 Performance optimization
-- 🔄 Documentation completion
-- 📋 Cross-browser testing
+**Tasks Completed in This Sprint:**
 
-### Hard Sprint 📋 PLANNED
-- Admin dashboard
-- Email notifications
-- Performance audit
-- Final deployment
-- Complete documentation
+1. Project initialization with Vite, React 18, and TypeScript
+2. Installation and configuration of Tailwind CSS and shadcn/ui component library
+3. Implementation of responsive Header component with navigation links
+4. Development of Footer component with contact information and social links
+5. Creation of Home page with hero section and featured properties
+6. Development of About page with company information and team section
+7. Implementation of Contact page with inquiry form structure
+8. Setup of React Router DOM v6 for client-side routing
+9. Configuration of responsive layout breakpoints for mobile, tablet, and desktop
+
+**Role-wise Contribution:**
+
+**Thejazo Tachu (Scrum Master, Frontend Developer):**
+- Facilitated sprint planning and daily stand-up coordination
+- Developed Header and Footer components with responsive design
+- Implemented navigation system using React Router
+- Created Home page hero section with call-to-action buttons
+- Ensured mobile-first responsive design across all pages
+
+**Bageesh Kumar Sharma (Product Owner, Backend Developer, Tester):**
+- Defined user stories and acceptance criteria for Sprint 1
+- Set up project repository and version control workflow
+- Created About page with team information section
+- Developed Contact page layout and form structure
+- Conducted initial testing of navigation and page routing
+
+**Sprint Outcome:**
+Successfully delivered a functional foundation with responsive navigation, three core pages (Home, About, Contact), and established the component architecture for subsequent development.
+
+---
+
+### Sprint 2 (Week 2): Property Features ✅ COMPLETED
+
+**Previous Sprint Reference:**
+Building upon the foundation established in Sprint 1, the team proceeded to implement the core property listing functionality. The navigation system and page structure from Week 1 enabled seamless integration of property-related features.
+
+**Tasks Completed in This Sprint:**
+
+1. Creation of comprehensive property data structure with 45+ properties across 12 Indian states
+2. Development of Properties listing page with grid layout
+3. Implementation of advanced filtering system (location, price range, BHK type, state)
+4. Creation of PropertyCard component with image, specifications, and pricing
+5. Development of PropertyDetail page with image gallery
+6. Implementation of property specifications display (area, bedrooms, bathrooms, amenities)
+7. Addition of property type categories (1BHK, 2BHK, 3BHK, 4BHK, Villa, Duplex)
+8. Integration of search functionality with real-time filtering
+9. Development of Services page with company offerings
+
+**Role-wise Contribution:**
+
+**Thejazo Tachu (Scrum Master, Frontend Developer):**
+- Facilitated sprint reviews and backlog refinement sessions
+- Developed PropertyCard component with responsive image handling
+- Created Properties listing page with filter sidebar
+- Implemented advanced filtering logic for multiple criteria
+- Designed and developed property image gallery component
+- Ensured consistent styling using Tailwind CSS design tokens
+
+**Bageesh Kumar Sharma (Product Owner, Backend Developer, Tester):**
+- Curated property data for 45+ listings across multiple states
+- Designed property data schema with comprehensive attributes
+- Developed PropertyDetail page with full specifications
+- Created Services page with service offerings
+- Conducted functional testing of filter combinations
+- Validated property data accuracy and consistency
+
+**Sprint Outcome:**
+Delivered a fully functional property browsing system with advanced filtering, detailed property views with image galleries, and comprehensive property information across multiple Indian states.
+
+---
+
+### Sprint 3 (Week 3): User Authentication & Interactions ✅ COMPLETED
+
+**Previous Sprint Reference:**
+With the property listing and filtering system completed in Sprint 2, the team focused on implementing user authentication and interactive features. The property infrastructure enabled the development of user-specific functionalities.
+
+**Tasks Completed in This Sprint:**
+
+1. Integration of Lovable Cloud (PostgreSQL) backend infrastructure
+2. Implementation of user authentication system (email/password signup and login)
+3. Creation of user profiles table with RLS (Row Level Security) policies
+4. Development of saved properties functionality with database persistence
+5. Implementation of schedule visit modal with date and time selection
+6. Creation of scheduled_visits table with user-specific RLS policies
+7. Development of inquiry submission system with database storage
+8. Implementation of feedback/testimonials system with rating functionality
+9. Creation of My Visits page for viewing scheduled appointments
+10. Development of Saved Properties page for viewing favorites
+11. Implementation of UserMenu component with authentication state handling
+
+**Role-wise Contribution:**
+
+**Thejazo Tachu (Scrum Master, Frontend Developer):**
+- Coordinated sprint activities and resolved blockers
+- Developed Auth page with signup and login forms
+- Created ScheduleVisitModal component with form validation
+- Implemented UserMenu component with dropdown navigation
+- Developed My Visits page with visit listing
+- Created Saved Properties page with property cards
+- Implemented toast notifications for user feedback
+
+**Bageesh Kumar Sharma (Product Owner, Backend Developer, Tester):**
+- Designed and implemented database schema for all tables
+- Created RLS policies for profiles, saved_properties, scheduled_visits, inquiries, and feedback tables
+- Integrated Supabase authentication with email/password
+- Developed AuthContext for global authentication state management
+- Implemented database queries for CRUD operations
+- Conducted end-to-end testing of authentication flows
+- Validated RLS policy enforcement and data security
+
+**Sprint Outcome:**
+Delivered a complete user management system with secure authentication, personalized features (saved properties, scheduled visits), and fully functional inquiry and feedback systems with database persistence and Row Level Security.
+
+---
+
+### Sprint 4 (Week 4): Enhancement, Email Integration & Documentation 🔄 CURRENT
+
+**Previous Sprint Reference:**
+Following the successful implementation of authentication and user interaction features in Sprint 3, the current sprint focuses on enhancing the platform with email notifications, property comparison tools, and comprehensive documentation for academic submission.
+
+**Tasks Being Completed in This Sprint:**
+
+1. Development of property comparison tool for side-by-side analysis
+2. Implementation of email notification system using Resend API
+3. Creation of send-email edge function for automated notifications
+4. Integration of welcome email on user registration
+5. Implementation of visit confirmation emails
+6. Addition of inquiry and feedback confirmation emails
+7. Expansion of property listings with additional properties per state
+8. Removal of "Independent House" from property type filters
+9. UI/UX improvements and responsive design refinements
+10. Performance optimization and code refactoring
+11. Completion of Agile project documentation with ER and DFD diagrams
+12. Cross-browser compatibility testing
+
+**Role-wise Contribution:**
+
+**Thejazo Tachu (Scrum Master, Frontend Developer):**
+- Facilitating final sprint ceremonies and documentation reviews
+- Developing PropertyComparison component with comparison modal
+- Implementing UI enhancements for property cards and listings
+- Refining responsive design for mobile devices
+- Updating filter options and removing deprecated property types
+- Conducting cross-browser testing on Chrome, Firefox, and Safari
+- Preparing frontend documentation and component specifications
+
+**Bageesh Kumar Sharma (Product Owner, Backend Developer, Tester):**
+- Developing send-email edge function with Resend API integration
+- Implementing email templates for welcome, visit, inquiry, and feedback
+- Configuring RESEND_API_KEY secret for email service
+- Expanding property data with additional listings across states
+- Updating Agile documentation with ER diagrams and DFD
+- Conducting integration testing of email notification system
+- Performing final UAT (User Acceptance Testing) for all features
+- Documenting database schema and security implementation
+
+**Sprint Outcome (Expected):**
+Complete platform enhancement with email notifications, property comparison functionality, expanded property listings, and comprehensive academic documentation ready for submission.
+
+---
+
+### Sprint 5 (Week 5): Hardening & Final Deployment 📋 PLANNED
+
+**Previous Sprint Reference:**
+Upon completion of Sprint 4's enhancement and documentation phase, the final hardening sprint will focus on production readiness, performance optimization, and final deployment.
+
+**Planned Tasks:**
+
+1. Admin dashboard development for property management
+2. Final performance audit and optimization
+3. Security review and penetration testing
+4. Production deployment and DNS configuration
+5. User documentation and help guides
+6. Final presentation preparation
+7. Project handover documentation
+
+**Role-wise Contribution (Planned):**
+
+**Thejazo Tachu (Scrum Master, Frontend Developer):**
+- Admin dashboard UI development
+- Final UI polish and accessibility improvements
+- Performance optimization for frontend assets
+- Preparation of presentation materials
+
+**Bageesh Kumar Sharma (Product Owner, Backend Developer, Tester):**
+- Admin dashboard backend functionality
+- Final security audit and RLS policy review
+- Production deployment configuration
+- Complete test case documentation
+
+**Sprint Outcome (Expected):**
+Production-ready platform with admin capabilities, optimized performance, and complete documentation for academic evaluation.
 
 ---
 

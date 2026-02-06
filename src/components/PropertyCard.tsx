@@ -2,8 +2,10 @@ import { MapPin, Bed, Bath, Maximize, Heart, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface PropertyCardProps {
+  id: string;
   image: string;
   title: string;
   location: string;
@@ -19,6 +21,7 @@ interface PropertyCardProps {
 }
 
 const PropertyCard = ({
+  id,
   image,
   title,
   location,
@@ -127,8 +130,8 @@ const PropertyCard = ({
 
         {/* CTA */}
         <div className="flex gap-2">
-          <Button variant="heroOutline" className="flex-1">
-            View Details
+          <Button variant="heroOutline" className="flex-1" asChild>
+            <Link to={`/property/${id}`}>View Details</Link>
           </Button>
           <Button variant="hero" className="flex-1">
             Schedule Visit

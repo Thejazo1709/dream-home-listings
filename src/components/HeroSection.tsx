@@ -1,8 +1,25 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Search, MapPin, Home, ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-property.jpg";
 
 const HeroSection = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [propertyType, setPropertyType] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    const params = new URLSearchParams();
+    if (searchTerm.trim()) params.set("search", searchTerm.trim());
+    if (propertyType) params.set("type", propertyType);
+    navigate(`/properties?${params.toString()}`);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") handleSearch();
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Image */}
@@ -45,22 +62,29 @@ const HeroSection = () => {
                 <input
                   type="text"
                   placeholder="Enter city, locality or project"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onKeyDown={handleKeyDown}
                   className="flex-1 bg-transparent outline-none text-foreground placeholder:text-muted-foreground"
                 />
               </div>
               <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-background sm:w-48">
                 <Home className="w-5 h-5 text-primary" />
-                <select className="flex-1 bg-transparent outline-none text-foreground appearance-none cursor-pointer">
+                <select
+                  value={propertyType}
+                  onChange={(e) => setPropertyType(e.target.value)}
+                  className="flex-1 bg-transparent outline-none text-foreground appearance-none cursor-pointer"
+                >
                   <option value="">Property Type</option>
-                  <option value="1bhk">1 BHK</option>
-                  <option value="2bhk">2 BHK</option>
-                  <option value="3bhk">3 BHK</option>
-                  <option value="4bhk">4 BHK</option>
-                  <option value="villa">Villa</option>
-                  <option value="duplex">Duplex</option>
+                  <option value="1 BHK">1 BHK</option>
+                  <option value="2 BHK">2 BHK</option>
+                  <option value="3 BHK">3 BHK</option>
+                  <option value="4 BHK">4 BHK</option>
+                  <option value="Villa">Villa</option>
+                  <option value="Duplex">Duplex</option>
                 </select>
               </div>
-              <Button variant="hero" size="lg" className="gap-2 btn-shine">
+              <Button variant="hero" size="lg" className="gap-2 btn-shine" onClick={handleSearch}>
                 <Search className="w-5 h-5" />
                 Search
               </Button>

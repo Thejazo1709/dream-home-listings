@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -11,9 +11,16 @@ import { Search, SlidersHorizontal, MapPin } from "lucide-react";
 import { getStates } from "@/data/properties";
 
 const Properties = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedType, setSelectedType] = useState("All");
+  const [searchParams] = useSearchParams();
+  const [searchTerm, setSearchTerm] = useState(searchParams.get("search") || "");
+  const [selectedType, setSelectedType] = useState(searchParams.get("type") || "All");
   const [selectedState, setSelectedState] = useState("All");
+
+  useEffect(() => {
+    setSearchTerm(searchParams.get("search") || "");
+    const type = searchParams.get("type");
+    setSelectedType(type || "All");
+  }, [searchParams]);
 
   const propertyTypes = ["All", "1 BHK", "2 BHK", "3 BHK", "4 BHK", "4 BHK Villa", "5 BHK Villa", "Duplex"];
   const states = ["All", ...getStates()];

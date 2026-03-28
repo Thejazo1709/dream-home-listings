@@ -22,7 +22,7 @@ const Properties = () => {
     setSelectedType(type || "All");
   }, [searchParams]);
 
-  const propertyTypes = ["All", "1 BHK", "2 BHK", "3 BHK", "4 BHK", "4 BHK Villa", "5 BHK Villa", "Duplex"];
+  const propertyTypes = ["All", "1 BHK", "2 BHK", "3 BHK", "4 BHK"];
   const states = ["All", ...getStates()];
 
   const filteredProperties = properties.filter((property) => {

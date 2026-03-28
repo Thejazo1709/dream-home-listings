@@ -80,8 +80,6 @@ const HeroSection = () => {
                   <option value="2 BHK">2 BHK</option>
                   <option value="3 BHK">3 BHK</option>
                   <option value="4 BHK">4 BHK</option>
-                  <option value="Villa">Villa</option>
-                  <option value="Duplex">Duplex</option>
                 </select>
               </div>
               <Button variant="hero" size="lg" className="gap-2 btn-shine" onClick={handleSearch}>

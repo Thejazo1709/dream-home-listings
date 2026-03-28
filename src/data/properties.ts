@@ -1,9 +1,43 @@
-import property1BHK from "@/assets/property-1bhk.jpg";
-import property2BHK from "@/assets/property-2bhk.jpg";
-import property3BHK from "@/assets/property-3bhk.jpg";
-import property4BHK from "@/assets/property-4bhk.jpg";
-import propertyDuplex from "@/assets/property-duplex.jpg";
-import heroProperty from "@/assets/hero-property.jpg";
+import propKoramangala1bhk from "@/assets/prop-koramangala-1bhk.jpg";
+import propWhitefield2bhk from "@/assets/prop-whitefield-2bhk.jpg";
+import propHsr3bhk from "@/assets/prop-hsr-3bhk.jpg";
+import propBandra4bhk from "@/assets/prop-bandra-4bhk.jpg";
+import propPowai2bhk from "@/assets/prop-powai-2bhk.jpg";
+import propThane3bhk from "@/assets/prop-thane-3bhk.jpg";
+import propGurgaon5bhk from "@/assets/prop-gurgaon-5bhk.jpg";
+import propNoida3bhk from "@/assets/prop-noida-3bhk.jpg";
+import propDwarka2bhk from "@/assets/prop-dwarka-2bhk.jpg";
+import propJubilee4bhk from "@/assets/prop-jubilee-4bhk.jpg";
+import propGachibowli2bhk from "@/assets/prop-gachibowli-2bhk.jpg";
+import propEcr4bhk from "@/assets/prop-ecr-4bhk.jpg";
+import propOmr3bhk from "@/assets/prop-omr-3bhk.jpg";
+import propAlipore3bhk from "@/assets/prop-alipore-3bhk.jpg";
+import propNewtown2bhk from "@/assets/prop-newtown-2bhk.jpg";
+import propSghighway4bhk from "@/assets/prop-sghighway-4bhk.jpg";
+import propPrahlad2bhk from "@/assets/prop-prahlad-2bhk.jpg";
+import propJaipur4bhk from "@/assets/prop-jaipur-4bhk.jpg";
+import propMohali3bhk from "@/assets/prop-mohali-3bhk.jpg";
+import propKochi2bhk from "@/assets/prop-kochi-2bhk.jpg";
+import propGoa3bhk from "@/assets/prop-goa-3bhk.jpg";
+import propIndore3bhk from "@/assets/prop-indore-3bhk.jpg";
+import propEc4bhk from "@/assets/prop-ec-4bhk.jpg";
+import propSarjapur3bhk from "@/assets/prop-sarjapur-3bhk.jpg";
+import propIndiranagar1bhk from "@/assets/prop-indiranagar-1bhk.jpg";
+import propAndheri2bhk from "@/assets/prop-andheri-2bhk.jpg";
+import propWorli3bhk from "@/assets/prop-worli-3bhk.jpg";
+import propGreaternoida3bhk from "@/assets/prop-greaternoida-3bhk.jpg";
+import propFaridabad2bhk from "@/assets/prop-faridabad-2bhk.jpg";
+import propKondapur3bhk from "@/assets/prop-kondapur-3bhk.jpg";
+import propMiyapur1bhk from "@/assets/prop-miyapur-1bhk.jpg";
+import propAnnanagar2bhk from "@/assets/prop-annanagar-2bhk.jpg";
+import propVelachery3bhk from "@/assets/prop-velachery-3bhk.jpg";
+import propSaltlake2bhk from "@/assets/prop-saltlake-2bhk.jpg";
+import propSatellite3bhk from "@/assets/prop-satellite-3bhk.jpg";
+import propMansarovar2bhk from "@/assets/prop-mansarovar-2bhk.jpg";
+import propLudhiana4bhk from "@/assets/prop-ludhiana-4bhk.jpg";
+import propKakkanad3bhk from "@/assets/prop-kakkanad-3bhk.jpg";
+import propPanjim2bhk from "@/assets/prop-panjim-2bhk.jpg";
+import propBhopal2bhk from "@/assets/prop-bhopal-2bhk.jpg";
 
 export interface Property {
   id: string;
@@ -35,7 +69,7 @@ export const properties: Property[] = [
   // Karnataka - Bangalore
   {
     id: "cozy-studio-koramangala",
-    image: property1BHK,
+    image: propKoramangala1bhk,
     title: "Cozy Studio Apartment",
     location: "Koramangala, Bangalore",
     city: "Bangalore",
@@ -60,7 +94,7 @@ export const properties: Property[] = [
   },
   {
     id: "modern-city-view-whitefield",
-    image: property2BHK,
+    image: propWhitefield2bhk,
     title: "Modern City View Apartment",
     location: "Whitefield, Bangalore",
     city: "Bangalore",
@@ -85,7 +119,7 @@ export const properties: Property[] = [
   },
   {
     id: "spacious-family-hsr",
-    image: property3BHK,
+    image: propHsr3bhk,
     title: "Spacious Family Residence",
     location: "HSR Layout, Bangalore",
     city: "Bangalore",
@@ -111,7 +145,7 @@ export const properties: Property[] = [
   // Maharashtra - Mumbai
   {
     id: "luxury-sea-view-bandra",
-    image: property4BHK,
+    image: propBandra4bhk,
     title: "Luxury Sea View Apartment",
     location: "Bandra West, Mumbai",
     city: "Mumbai",
@@ -136,7 +170,7 @@ export const properties: Property[] = [
   },
   {
     id: "premium-2bhk-powai",
-    image: property2BHK,
+    image: propPowai2bhk,
     title: "Premium Lake View Apartment",
     location: "Powai, Mumbai",
     city: "Mumbai",
@@ -161,7 +195,7 @@ export const properties: Property[] = [
   },
   {
     id: "spacious-3bhk-thane",
-    image: property3BHK,
+    image: propThane3bhk,
     title: "Spacious Family Home",
     location: "Ghodbunder Road, Thane",
     city: "Thane",
@@ -187,21 +221,21 @@ export const properties: Property[] = [
   // Delhi NCR
   {
     id: "luxury-villa-gurgaon",
-    image: property4BHK,
-    title: "Luxury Golf Course Villa",
+    image: propGurgaon5bhk,
+    title: "Luxury Golf Course Residence",
     location: "DLF Phase 5, Gurgaon",
     city: "Gurgaon",
     state: "Haryana",
     price: "₹12 Cr",
     pricePerSqft: "₹35,000",
-    bedrooms: 5,
-    bathrooms: 6,
+    bedrooms: 4,
+    bathrooms: 4,
     area: "3,430 sq.ft",
-    type: "5 BHK Villa",
+    type: "4 BHK",
     features: ["Golf Course View", "Private Pool", "Home Theater"],
     isNew: false,
     isFeatured: true,
-    description: "An exclusive 5BHK villa in the prestigious DLF Golf Links community. This architectural masterpiece features a private swimming pool, dedicated home theater, and stunning views of the championship golf course. Live the life of luxury in Delhi NCR's most elite address.",
+    description: "An exclusive 4BHK residence in the prestigious DLF Golf Links community. This architectural masterpiece features a private swimming pool, dedicated home theater, and stunning views of the championship golf course. Live the life of luxury in Delhi NCR's most elite address.",
     amenities: ["Private Pool", "Home Theater", "Golf Course Access", "Club Membership", "Gym", "Spa", "24/7 Security", "CCTV", "Smart Home", "5-Car Garage", "Generator Backup", "Landscaped Garden", "Servant Quarters"],
     furnishing: "Fully Furnished",
     parking: "5 Covered",
@@ -212,7 +246,7 @@ export const properties: Property[] = [
   },
   {
     id: "modern-3bhk-noida",
-    image: property3BHK,
+    image: propNoida3bhk,
     title: "Modern Sector 150 Apartment",
     location: "Sector 150, Noida",
     city: "Noida",
@@ -237,7 +271,7 @@ export const properties: Property[] = [
   },
   {
     id: "premium-2bhk-dwarka",
-    image: property2BHK,
+    image: propDwarka2bhk,
     title: "Premium Dwarka Apartment",
     location: "Dwarka Sector 21, Delhi",
     city: "Delhi",
@@ -263,21 +297,21 @@ export const properties: Property[] = [
   // Telangana - Hyderabad
   {
     id: "luxury-duplex-jubilee",
-    image: propertyDuplex,
-    title: "Luxury Duplex Penthouse",
+    image: propJubilee4bhk,
+    title: "Luxury Penthouse Residence",
     location: "Jubilee Hills, Hyderabad",
     city: "Hyderabad",
     state: "Telangana",
     price: "₹4.2 Cr",
     pricePerSqft: "₹16,000",
     bedrooms: 4,
-    bathrooms: 5,
+    bathrooms: 4,
     area: "2,625 sq.ft",
-    type: "Duplex",
+    type: "4 BHK",
     features: ["Private Terrace", "Panoramic View", "Designer Interiors"],
     isNew: true,
     isFeatured: true,
-    description: "Stunning duplex penthouse in the elite Jubilee Hills neighborhood. This architectural marvel features designer interiors, a massive private terrace with panoramic city views, and all the amenities befitting a luxury lifestyle. Experience the best of Hyderabad living.",
+    description: "Stunning penthouse in the elite Jubilee Hills neighborhood. This architectural marvel features designer interiors, a massive private terrace with panoramic city views, and all the amenities befitting a luxury lifestyle. Experience the best of Hyderabad living.",
     amenities: ["Private Terrace", "Swimming Pool", "Gym", "Club House", "Squash Court", "Yoga Studio", "24/7 Security", "CCTV", "Private Lift", "3-Car Parking", "Power Backup", "Smart Home", "Concierge"],
     furnishing: "Fully Furnished",
     parking: "3 Covered",
@@ -288,7 +322,7 @@ export const properties: Property[] = [
   },
   {
     id: "affordable-2bhk-gachibowli",
-    image: property2BHK,
+    image: propGachibowli2bhk,
     title: "Modern IT Corridor Apartment",
     location: "Gachibowli, Hyderabad",
     city: "Hyderabad",
@@ -314,21 +348,21 @@ export const properties: Property[] = [
   // Tamil Nadu - Chennai
   {
     id: "sea-facing-ecr",
-    image: heroProperty,
-    title: "Premium Sea Facing Villa",
+    image: propEcr4bhk,
+    title: "Premium Sea Facing Residence",
     location: "ECR, Chennai",
     city: "Chennai",
     state: "Tamil Nadu",
     price: "₹5.5 Cr",
     pricePerSqft: "₹18,000",
     bedrooms: 4,
-    bathrooms: 5,
+    bathrooms: 4,
     area: "3,055 sq.ft",
-    type: "4 BHK Villa",
+    type: "4 BHK",
     features: ["Beach Access", "Private Garden", "Infinity Pool"],
     isNew: true,
     isFeatured: true,
-    description: "A rare beachfront villa on the scenic East Coast Road. Wake up to the sound of waves, enjoy private beach access, and relax by your infinity pool overlooking the Bay of Bengal. This is the ultimate coastal living experience in Chennai.",
+    description: "A rare beachfront residence on the scenic East Coast Road. Wake up to the sound of waves, enjoy private beach access, and relax by your infinity pool overlooking the Bay of Bengal. This is the ultimate coastal living experience in Chennai.",
     amenities: ["Private Beach Access", "Infinity Pool", "Landscaped Garden", "Outdoor Kitchen", "24/7 Security", "CCTV", "3-Car Garage", "Generator Backup", "Bore Well", "Rainwater Harvesting"],
     furnishing: "Fully Furnished",
     parking: "3 Covered",
@@ -339,7 +373,7 @@ export const properties: Property[] = [
   },
   {
     id: "modern-3bhk-omr",
-    image: property3BHK,
+    image: propOmr3bhk,
     title: "Smart Home Apartment",
     location: "OMR, Chennai",
     city: "Chennai",
@@ -365,7 +399,7 @@ export const properties: Property[] = [
   // West Bengal - Kolkata
   {
     id: "heritage-apartment-alipore",
-    image: property3BHK,
+    image: propAlipore3bhk,
     title: "Heritage Area Residence",
     location: "Alipore, Kolkata",
     city: "Kolkata",
@@ -390,7 +424,7 @@ export const properties: Property[] = [
   },
   {
     id: "modern-2bhk-newtown",
-    image: property2BHK,
+    image: propNewtown2bhk,
     title: "New Town Smart Apartment",
     location: "New Town, Kolkata",
     city: "Kolkata",
@@ -416,7 +450,7 @@ export const properties: Property[] = [
   // Gujarat - Ahmedabad
   {
     id: "luxury-4bhk-sg-highway",
-    image: property4BHK,
+    image: propSghighway4bhk,
     title: "Luxury SG Highway Apartment",
     location: "SG Highway, Ahmedabad",
     city: "Ahmedabad",
@@ -441,7 +475,7 @@ export const properties: Property[] = [
   },
   {
     id: "smart-2bhk-prahlad-nagar",
-    image: property2BHK,
+    image: propPrahlad2bhk,
     title: "Smart Living Apartment",
     location: "Prahlad Nagar, Ahmedabad",
     city: "Ahmedabad",
@@ -467,21 +501,21 @@ export const properties: Property[] = [
   // Rajasthan - Jaipur
   {
     id: "royal-villa-jaipur",
-    image: heroProperty,
-    title: "Royal Heritage Villa",
+    image: propJaipur4bhk,
+    title: "Royal Heritage Residence",
     location: "C-Scheme, Jaipur",
     city: "Jaipur",
     state: "Rajasthan",
     price: "₹3.5 Cr",
     pricePerSqft: "₹12,000",
-    bedrooms: 5,
-    bathrooms: 6,
+    bedrooms: 4,
+    bathrooms: 4,
     area: "2,920 sq.ft",
-    type: "5 BHK Villa",
+    type: "4 BHK",
     features: ["Rajasthani Architecture", "Courtyard", "Premium Location"],
     isNew: false,
     isFeatured: true,
-    description: "A stunning villa that blends traditional Rajasthani architecture with modern luxury. Features include a central courtyard, jharokha windows, and contemporary interiors. Located in Jaipur's most prestigious C-Scheme area.",
+    description: "A stunning residence that blends traditional Rajasthani architecture with modern luxury. Features include a central courtyard, jharokha windows, and contemporary interiors. Located in Jaipur's most prestigious C-Scheme area.",
     amenities: ["Central Courtyard", "Traditional Interiors", "Modern Kitchen", "Home Theater", "Private Garden", "24/7 Security", "CCTV", "3-Car Garage", "Generator Backup", "Bore Well", "Rainwater Harvesting"],
     furnishing: "Fully Furnished",
     parking: "3 Covered",
@@ -493,7 +527,7 @@ export const properties: Property[] = [
   // Punjab - Chandigarh
   {
     id: "modern-3bhk-mohali",
-    image: property3BHK,
+    image: propMohali3bhk,
     title: "IT City Premium Apartment",
     location: "IT City, Mohali",
     city: "Mohali",
@@ -519,7 +553,7 @@ export const properties: Property[] = [
   // Kerala - Kochi
   {
     id: "waterfront-apartment-marine",
-    image: property2BHK,
+    image: propKochi2bhk,
     title: "Marine Drive Waterfront",
     location: "Marine Drive, Kochi",
     city: "Kochi",
@@ -545,21 +579,21 @@ export const properties: Property[] = [
   // Goa
   {
     id: "beach-villa-calangute",
-    image: propertyDuplex,
-    title: "Beach Proximity Villa",
+    image: propGoa3bhk,
+    title: "Beach Proximity Residence",
     location: "Calangute, Goa",
     city: "Calangute",
     state: "Goa",
     price: "₹4.8 Cr",
     pricePerSqft: "₹20,000",
     bedrooms: 3,
-    bathrooms: 4,
+    bathrooms: 3,
     area: "2,400 sq.ft",
-    type: "3 BHK Villa",
+    type: "3 BHK",
     features: ["Near Beach", "Private Pool", "Portuguese Architecture"],
     isNew: true,
     isFeatured: true,
-    description: "Charming Portuguese-style villa just minutes from Calangute Beach. Features include a private pool, tropical garden, and authentic Goan architecture. Perfect as a vacation home or rental investment in India's favorite beach destination.",
+    description: "Charming Portuguese-style residence just minutes from Calangute Beach. Features include a private pool, tropical garden, and authentic Goan architecture. Perfect as a vacation home or rental investment in India's favorite beach destination.",
     amenities: ["Private Pool", "Tropical Garden", "Outdoor Dining", "Beach Access", "24/7 Security", "CCTV", "2-Car Parking", "Generator Backup", "Bore Well", "Solar Panels"],
     furnishing: "Fully Furnished",
     parking: "2 Open",
@@ -571,7 +605,7 @@ export const properties: Property[] = [
   // Madhya Pradesh - Indore
   {
     id: "modern-apartment-vijay-nagar",
-    image: property3BHK,
+    image: propIndore3bhk,
     title: "Central Mall Road Apartment",
     location: "Vijay Nagar, Indore",
     city: "Indore",
@@ -597,8 +631,8 @@ export const properties: Property[] = [
   // Additional Karnataka properties
   {
     id: "luxury-pool-villa-ec",
-    image: property4BHK,
-    title: "Luxury Pool Villa",
+    image: propEc4bhk,
+    title: "Luxury Pool Residence",
     location: "Electronic City, Bangalore",
     city: "Bangalore",
     state: "Karnataka",
@@ -607,11 +641,11 @@ export const properties: Property[] = [
     bedrooms: 4,
     bathrooms: 4,
     area: "3,845 sq.ft",
-    type: "4 BHK Villa",
+    type: "4 BHK",
     features: ["Private Pool", "Garden", "Covered Parking"],
     isNew: false,
     isFeatured: true,
-    description: "Indulge in the ultimate luxury living experience with this magnificent 4BHK villa featuring a private swimming pool and beautifully landscaped garden.",
+    description: "Indulge in the ultimate luxury living experience with this magnificent 4BHK residence featuring a private swimming pool and beautifully landscaped garden.",
     amenities: ["Private Pool", "Landscaped Garden", "Club House", "Gym", "Tennis Court", "24/7 Security", "Smart Home System"],
     furnishing: "Fully Furnished",
     parking: "3 Covered",
@@ -622,8 +656,8 @@ export const properties: Property[] = [
   },
   {
     id: "contemporary-duplex-sarjapur",
-    image: propertyDuplex,
-    title: "Contemporary Duplex Home",
+    image: propSarjapur3bhk,
+    title: "Contemporary Premium Home",
     location: "Sarjapur Road, Bangalore",
     city: "Bangalore",
     state: "Karnataka",
@@ -632,22 +666,22 @@ export const properties: Property[] = [
     bedrooms: 3,
     bathrooms: 3,
     area: "2,574 sq.ft",
-    type: "Duplex",
+    type: "3 BHK",
     features: ["Terrace Garden", "Smart Home", "2 Parking"],
     isNew: true,
     isFeatured: false,
-    description: "This stunning contemporary duplex on Sarjapur Road combines modern architecture with smart living.",
+    description: "This stunning contemporary home on Sarjapur Road combines modern architecture with smart living.",
     amenities: ["Terrace Garden", "Smart Home System", "Club House", "Gym", "Swimming Pool", "24/7 Security"],
     furnishing: "Semi-Furnished",
     parking: "2 Covered",
-    floor: "Duplex (3rd & 4th)",
+    floor: "3rd & 4th Floor",
     facing: "West",
     age: "New Construction",
     possession: "Ready to Move"
   },
   {
     id: "premium-1bhk-indiranagar",
-    image: property1BHK,
+    image: propIndiranagar1bhk,
     title: "Premium Studio Indiranagar",
     location: "Indiranagar, Bangalore",
     city: "Bangalore",
@@ -673,7 +707,7 @@ export const properties: Property[] = [
   // Additional Maharashtra properties
   {
     id: "modern-2bhk-andheri",
-    image: property2BHK,
+    image: propAndheri2bhk,
     title: "Modern Andheri Apartment",
     location: "Andheri West, Mumbai",
     city: "Mumbai",
@@ -698,7 +732,7 @@ export const properties: Property[] = [
   },
   {
     id: "luxury-3bhk-worli",
-    image: property3BHK,
+    image: propWorli3bhk,
     title: "Luxury Worli Sea View",
     location: "Worli, Mumbai",
     city: "Mumbai",
@@ -724,7 +758,7 @@ export const properties: Property[] = [
   // Additional Delhi NCR properties
   {
     id: "premium-3bhk-greater-noida",
-    image: property3BHK,
+    image: propGreaternoida3bhk,
     title: "Premium Greater Noida Home",
     location: "Greater Noida West",
     city: "Greater Noida",
@@ -749,7 +783,7 @@ export const properties: Property[] = [
   },
   {
     id: "smart-2bhk-faridabad",
-    image: property2BHK,
+    image: propFaridabad2bhk,
     title: "Smart Home Faridabad",
     location: "Sector 88, Faridabad",
     city: "Faridabad",
@@ -775,7 +809,7 @@ export const properties: Property[] = [
   // Additional Telangana properties
   {
     id: "premium-3bhk-kondapur",
-    image: property3BHK,
+    image: propKondapur3bhk,
     title: "Tech Corridor Premium Home",
     location: "Kondapur, Hyderabad",
     city: "Hyderabad",
@@ -800,7 +834,7 @@ export const properties: Property[] = [
   },
   {
     id: "affordable-1bhk-miyapur",
-    image: property1BHK,
+    image: propMiyapur1bhk,
     title: "Affordable Metro Home",
     location: "Miyapur, Hyderabad",
     city: "Hyderabad",
@@ -826,7 +860,7 @@ export const properties: Property[] = [
   // Additional Tamil Nadu properties
   {
     id: "premium-2bhk-anna-nagar",
-    image: property2BHK,
+    image: propAnnanagar2bhk,
     title: "Anna Nagar Premium Flat",
     location: "Anna Nagar, Chennai",
     city: "Chennai",
@@ -851,7 +885,7 @@ export const properties: Property[] = [
   },
   {
     id: "modern-3bhk-velachery",
-    image: property3BHK,
+    image: propVelachery3bhk,
     title: "Modern Velachery Home",
     location: "Velachery, Chennai",
     city: "Chennai",
@@ -877,7 +911,7 @@ export const properties: Property[] = [
   // Additional West Bengal properties
   {
     id: "affordable-2bhk-salt-lake",
-    image: property2BHK,
+    image: propSaltlake2bhk,
     title: "Salt Lake IT Hub Home",
     location: "Salt Lake, Kolkata",
     city: "Kolkata",
@@ -903,7 +937,7 @@ export const properties: Property[] = [
   // Additional Gujarat properties
   {
     id: "modern-3bhk-satellite",
-    image: property3BHK,
+    image: propSatellite3bhk,
     title: "Satellite Road Luxury",
     location: "Satellite, Ahmedabad",
     city: "Ahmedabad",
@@ -929,7 +963,7 @@ export const properties: Property[] = [
   // Additional Rajasthan properties
   {
     id: "modern-2bhk-mansarovar",
-    image: property2BHK,
+    image: propMansarovar2bhk,
     title: "Modern Mansarovar Home",
     location: "Mansarovar, Jaipur",
     city: "Jaipur",
@@ -955,8 +989,8 @@ export const properties: Property[] = [
   // Additional Punjab properties
   {
     id: "luxury-4bhk-ludhiana",
-    image: property4BHK,
-    title: "Luxury Ludhiana Villa",
+    image: propLudhiana4bhk,
+    title: "Luxury Ludhiana Residence",
     location: "Model Town, Ludhiana",
     city: "Ludhiana",
     state: "Punjab",
@@ -981,7 +1015,7 @@ export const properties: Property[] = [
   // Additional Kerala properties
   {
     id: "modern-3bhk-kakkanad",
-    image: property3BHK,
+    image: propKakkanad3bhk,
     title: "Smart City Apartment",
     location: "Kakkanad, Kochi",
     city: "Kochi",
@@ -1007,7 +1041,7 @@ export const properties: Property[] = [
   // Additional Goa properties
   {
     id: "modern-2bhk-panjim",
-    image: property2BHK,
+    image: propPanjim2bhk,
     title: "Capital City Apartment",
     location: "Panjim, Goa",
     city: "Panjim",
@@ -1033,7 +1067,7 @@ export const properties: Property[] = [
   // Additional Madhya Pradesh properties
   {
     id: "affordable-2bhk-bhopal",
-    image: property2BHK,
+    image: propBhopal2bhk,
     title: "Lake City Home",
     location: "MP Nagar, Bhopal",
     city: "Bhopal",

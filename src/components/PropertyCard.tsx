@@ -1,8 +1,12 @@
 import { MapPin, Bed, Bath, Maximize, Heart, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/contexts/AuthContext";
+import { useToast } from "@/hooks/use-toast";
+import ScheduleVisitModal from "@/components/ScheduleVisitModal";
 
 interface PropertyCardProps {
   id: string;
@@ -35,7 +39,69 @@ const PropertyCard = ({
   isNew,
   isFeatured,
 }: PropertyCardProps) => {
+  const { user } = useAuth();
+  const { toast } = useToast();
+  const navigate = useNavigate();
   const [isLiked, setIsLiked] = useState(false);
+  const [isToggling, setIsToggling] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      checkIfSaved();
+    }
+  }, [user, id]);
+
+  const checkIfSaved = async () => {
+    if (!user) return;
+    const { data } = await supabase
+      .from("saved_properties")
+      .select("id")
+      .eq("user_id", user.id)
+      .eq("property_id", id)
+      .maybeSingle();
+    setIsLiked(!!data);
+  };
+
+  const toggleSave = async () => {
+    if (!user) {
+      toast({
+        title: "Login Required",
+        description: "Please sign in to save properties.",
+        variant: "destructive",
+      });
+      navigate("/auth");
+      return;
+    }
+
+    setIsToggling(true);
+    try {
+      if (isLiked) {
+        const { error } = await supabase
+          .from("saved_properties")
+          .delete()
+          .eq("user_id", user.id)
+          .eq("property_id", id);
+        if (error) throw error;
+        setIsLiked(false);
+        toast({ title: "Removed", description: "Property removed from saved list." });
+      } else {
+        const { error } = await supabase
+          .from("saved_properties")
+          .insert({ user_id: user.id, property_id: id });
+        if (error) throw error;
+        setIsLiked(true);
+        toast({ title: "Saved! ❤️", description: "Property added to your saved list." });
+      }
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Something went wrong.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsToggling(false);
+    }
+  };
 
   return (
     <div className="group bg-card rounded-2xl overflow-hidden shadow-soft card-hover border border-border/50">
@@ -69,8 +135,9 @@ const PropertyCard = ({
 
         {/* Like Button */}
         <button
-          onClick={() => setIsLiked(!isLiked)}
-          className="absolute top-4 right-4 w-10 h-10 rounded-full bg-card/90 backdrop-blur-sm flex items-center justify-center shadow-soft hover:scale-110 transition-transform"
+          onClick={toggleSave}
+          disabled={isToggling}
+          className="absolute top-4 right-4 w-10 h-10 rounded-full bg-card/90 backdrop-blur-sm flex items-center justify-center shadow-soft hover:scale-110 transition-transform disabled:opacity-50"
         >
           <Heart
             className={`w-5 h-5 transition-colors ${
@@ -133,9 +200,15 @@ const PropertyCard = ({
           <Button variant="heroOutline" className="flex-1" asChild>
             <Link to={`/property/${id}`}>View Details</Link>
           </Button>
-          <Button variant="hero" className="flex-1">
-            Schedule Visit
-          </Button>
+          <ScheduleVisitModal
+            propertyId={id}
+            propertyTitle={title}
+            trigger={
+              <Button variant="hero" className="flex-1">
+                Schedule Visit
+              </Button>
+            }
+          />
         </div>
       </div>
     </div>

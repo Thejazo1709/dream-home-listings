@@ -161,9 +161,10 @@ const PropertyDetail = () => {
                   />
                   <div className="absolute top-4 right-4 flex gap-2">
                     <button
-                      onClick={() => setIsLiked(!isLiked)}
+                      onClick={toggleSave}
+                      disabled={isToggling}
                       className={`p-3 rounded-full backdrop-blur-md transition-all ${
-                        isLiked ? "bg-red-500 text-white" : "bg-white/90 text-foreground hover:bg-white"
+                        isLiked ? "bg-destructive text-destructive-foreground" : "bg-card/90 text-foreground hover:bg-card"
                       }`}
                     >
                       <Heart className={`w-5 h-5 ${isLiked ? "fill-current" : ""}`} />

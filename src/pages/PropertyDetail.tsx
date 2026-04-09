@@ -39,8 +39,10 @@ const PropertyDetail = () => {
   const { id } = useParams<{ id: string }>();
   const property = getPropertyById(id || "");
   const { toast } = useToast();
+  const { user } = useAuth();
   const [selectedImage, setSelectedImage] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
+  const [isToggling, setIsToggling] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -48,6 +50,42 @@ const PropertyDetail = () => {
     phone: "",
     message: ""
   });
+
+  useEffect(() => {
+    if (user && id) {
+      supabase
+        .from("saved_properties")
+        .select("id")
+        .eq("user_id", user.id)
+        .eq("property_id", id)
+        .maybeSingle()
+        .then(({ data }) => setIsLiked(!!data));
+    }
+  }, [user, id]);
+
+  const toggleSave = async () => {
+    if (!user) {
+      toast({ title: "Login Required", description: "Please sign in to save properties.", variant: "destructive" });
+      return;
+    }
+    if (!id) return;
+    setIsToggling(true);
+    try {
+      if (isLiked) {
+        await supabase.from("saved_properties").delete().eq("user_id", user.id).eq("property_id", id);
+        setIsLiked(false);
+        toast({ title: "Removed", description: "Property removed from saved list." });
+      } else {
+        await supabase.from("saved_properties").insert({ user_id: user.id, property_id: id });
+        setIsLiked(true);
+        toast({ title: "Saved! ❤️", description: "Property added to your saved list." });
+      }
+    } catch (error: any) {
+      toast({ title: "Error", description: error.message, variant: "destructive" });
+    } finally {
+      setIsToggling(false);
+    }
+  };
 
   if (!property) {
     return (

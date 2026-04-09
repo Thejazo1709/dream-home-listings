@@ -107,10 +107,10 @@ const About = () => {
                       most sought-after neighborhoods.
                     </p>
                     <p>
-                      Today, our portfolio spans from affordable 1BHK apartments to luxury villas 
-                      and independent houses, catering to diverse needs and budgets. Our success 
-                      is built on the foundation of trust, transparency, and an unwavering commitment 
-                      to our clients' satisfaction.
+                     Today, our portfolio spans from affordable 1BHK apartments to spacious 4BHK 
+                       premium residences, catering to diverse needs and budgets. Our success 
+                       is built on the foundation of trust, transparency, and an unwavering commitment 
+                       to our clients' satisfaction.
                     </p>
                   </div>
                 </div>

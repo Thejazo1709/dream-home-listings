@@ -178,7 +178,7 @@ const PropertyDetail = () => {
                   </div>
                   <div className="absolute bottom-4 left-4 flex gap-2">
                     {property.isNew && (
-                      <span className="px-3 py-1 bg-green-500 text-white text-sm font-medium rounded-full">
+                      <span className="px-3 py-1 bg-accent text-accent-foreground text-sm font-medium rounded-full">
                         New
                       </span>
                     )}

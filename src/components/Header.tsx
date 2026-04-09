@@ -41,7 +41,7 @@ const Header = () => {
           <div className="hidden lg:flex items-center gap-4">
             <Button variant="ghost" size="sm" className="gap-2">
               <Phone className="w-4 h-4" />
-              +91 98765 43210
+              +91 82598 55188
             </Button>
             <UserMenu />
           </div>

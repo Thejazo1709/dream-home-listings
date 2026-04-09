@@ -50,7 +50,7 @@ const HeroSection = () => {
 
           {/* Description */}
           <p className="text-lg lg:text-xl text-primary-foreground/80 mb-8 max-w-xl animate-fade-up" style={{ animationDelay: "0.2s" }}>
-            Discover premium residential properties from cozy 1BHKs to luxurious villas. 
+            Discover premium residential properties from cozy 1BHKs to spacious 4BHKs. 
             Your perfect home awaits with expert guidance every step of the way.
           </p>
 

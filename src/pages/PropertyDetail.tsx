@@ -1,8 +1,10 @@
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -37,8 +39,10 @@ const PropertyDetail = () => {
   const { id } = useParams<{ id: string }>();
   const property = getPropertyById(id || "");
   const { toast } = useToast();
+  const { user } = useAuth();
   const [selectedImage, setSelectedImage] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
+  const [isToggling, setIsToggling] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -46,6 +50,42 @@ const PropertyDetail = () => {
     phone: "",
     message: ""
   });
+
+  useEffect(() => {
+    if (user && id) {
+      supabase
+        .from("saved_properties")
+        .select("id")
+        .eq("user_id", user.id)
+        .eq("property_id", id)
+        .maybeSingle()
+        .then(({ data }) => setIsLiked(!!data));
+    }
+  }, [user, id]);
+
+  const toggleSave = async () => {
+    if (!user) {
+      toast({ title: "Login Required", description: "Please sign in to save properties.", variant: "destructive" });
+      return;
+    }
+    if (!id) return;
+    setIsToggling(true);
+    try {
+      if (isLiked) {
+        await supabase.from("saved_properties").delete().eq("user_id", user.id).eq("property_id", id);
+        setIsLiked(false);
+        toast({ title: "Removed", description: "Property removed from saved list." });
+      } else {
+        await supabase.from("saved_properties").insert({ user_id: user.id, property_id: id });
+        setIsLiked(true);
+        toast({ title: "Saved! ❤️", description: "Property added to your saved list." });
+      }
+    } catch (error: any) {
+      toast({ title: "Error", description: error.message, variant: "destructive" });
+    } finally {
+      setIsToggling(false);
+    }
+  };
 
   if (!property) {
     return (
@@ -121,9 +161,10 @@ const PropertyDetail = () => {
                   />
                   <div className="absolute top-4 right-4 flex gap-2">
                     <button
-                      onClick={() => setIsLiked(!isLiked)}
+                      onClick={toggleSave}
+                      disabled={isToggling}
                       className={`p-3 rounded-full backdrop-blur-md transition-all ${
-                        isLiked ? "bg-red-500 text-white" : "bg-white/90 text-foreground hover:bg-white"
+                        isLiked ? "bg-destructive text-destructive-foreground" : "bg-card/90 text-foreground hover:bg-card"
                       }`}
                     >
                       <Heart className={`w-5 h-5 ${isLiked ? "fill-current" : ""}`} />
@@ -137,7 +178,7 @@ const PropertyDetail = () => {
                   </div>
                   <div className="absolute bottom-4 left-4 flex gap-2">
                     {property.isNew && (
-                      <span className="px-3 py-1 bg-green-500 text-white text-sm font-medium rounded-full">
+                      <span className="px-3 py-1 bg-accent text-accent-foreground text-sm font-medium rounded-full">
                         New
                       </span>
                     )}
@@ -341,14 +382,14 @@ const PropertyDetail = () => {
                   <div className="mt-6 pt-6 border-t border-border">
                     <p className="text-sm text-muted-foreground mb-4">Or contact us directly:</p>
                     <div className="space-y-3">
-                      <a href="tel:+919876543210" className="flex items-center gap-3 text-foreground hover:text-primary transition-colors">
-                        <Phone className="w-4 h-4" />
-                        <span>+91 98765 43210</span>
-                      </a>
-                      <a href="mailto:info@tbrealestate.com" className="flex items-center gap-3 text-foreground hover:text-primary transition-colors">
-                        <Mail className="w-4 h-4" />
-                        <span>info@tbrealestate.com</span>
-                      </a>
+                       <a href="tel:+918259855188" className="flex items-center gap-3 text-foreground hover:text-primary transition-colors">
+                         <Phone className="w-4 h-4" />
+                         <span>+91 82598 55188</span>
+                       </a>
+                       <a href="mailto:25mcaa54@kristujayanti.com" className="flex items-center gap-3 text-foreground hover:text-primary transition-colors">
+                         <Mail className="w-4 h-4" />
+                         <span>25mcaa54@kristujayanti.com</span>
+                       </a>
                     </div>
                   </div>
                 </div>

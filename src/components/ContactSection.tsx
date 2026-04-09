@@ -99,8 +99,8 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Call Us</h4>
-                  <p className="text-muted-foreground">+91 98765 43210</p>
-                  <p className="text-muted-foreground">+91 98765 43211</p>
+                   <p className="text-muted-foreground">+91 82598 55188</p>
+                   <p className="text-muted-foreground">+91 88613 08588</p>
                 </div>
               </div>
 
@@ -110,8 +110,8 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Email Us</h4>
-                  <p className="text-muted-foreground">info@tbrealestate.com</p>
-                  <p className="text-muted-foreground">sales@tbrealestate.com</p>
+                   <p className="text-muted-foreground">25mcaa54@kristujayanti.com</p>
+                   <p className="text-muted-foreground">25mcaa15@kristujayanti.com</p>
                 </div>
               </div>
 
@@ -208,8 +208,6 @@ const ContactSection = () => {
                   <option value="2bhk">2 BHK Apartment</option>
                   <option value="3bhk">3 BHK Apartment</option>
                   <option value="4bhk">4 BHK Apartment</option>
-                  <option value="villa">Villa</option>
-                  <option value="duplex">Duplex</option>
                 </select>
               </div>
 

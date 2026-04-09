@@ -26,12 +26,12 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    details: ["+91 98765 43210", "+91 80 4567 8901"]
+    details: ["+91 82598 55188", "+91 88613 08588"]
   },
   {
     icon: Mail,
     title: "Email Us",
-    details: ["info@tbrealestate.com", "sales@tbrealestate.com"]
+    details: ["25mcaa54@kristujayanti.com", "25mcaa15@kristujayanti.com"]
   },
   {
     icon: Clock,
@@ -288,7 +288,7 @@ const Contact = () => {
                       </h3>
                       <div className="space-y-4">
                         <a 
-                          href="tel:+919876543210" 
+                          href="tel:+918259855188" 
                           className="flex items-center gap-4 p-4 bg-muted/50 rounded-xl hover:bg-muted transition-colors"
                         >
                           <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
@@ -296,11 +296,11 @@ const Contact = () => {
                           </div>
                           <div>
                             <p className="text-sm text-muted-foreground">Call Now</p>
-                            <p className="font-semibold text-foreground">+91 98765 43210</p>
+                            <p className="font-semibold text-foreground">+91 82598 55188</p>
                           </div>
                         </a>
                         <a 
-                          href="https://wa.me/919876543210" 
+                          href="https://wa.me/918259855188" 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="flex items-center gap-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-xl hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors"

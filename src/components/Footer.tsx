@@ -55,7 +55,7 @@ const Footer = () => {
           <div>
             <h4 className="font-heading text-lg font-semibold mb-6">Property Types</h4>
             <ul className="space-y-3">
-              {["1 BHK Apartments", "2 BHK Apartments", "3 BHK Apartments", "4 BHK Apartments", "Villas", "Duplexes", "Independent Houses"].map((item) => (
+              {["1 BHK Apartments", "2 BHK Apartments", "3 BHK Apartments", "4 BHK Apartments"].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-primary-foreground/70 hover:text-accent transition-colors text-sm">
                     {item}

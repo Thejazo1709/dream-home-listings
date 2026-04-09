@@ -341,14 +341,14 @@ const PropertyDetail = () => {
                   <div className="mt-6 pt-6 border-t border-border">
                     <p className="text-sm text-muted-foreground mb-4">Or contact us directly:</p>
                     <div className="space-y-3">
-                      <a href="tel:+919876543210" className="flex items-center gap-3 text-foreground hover:text-primary transition-colors">
-                        <Phone className="w-4 h-4" />
-                        <span>+91 98765 43210</span>
-                      </a>
-                      <a href="mailto:info@tbrealestate.com" className="flex items-center gap-3 text-foreground hover:text-primary transition-colors">
-                        <Mail className="w-4 h-4" />
-                        <span>info@tbrealestate.com</span>
-                      </a>
+                       <a href="tel:+918259855188" className="flex items-center gap-3 text-foreground hover:text-primary transition-colors">
+                         <Phone className="w-4 h-4" />
+                         <span>+91 82598 55188</span>
+                       </a>
+                       <a href="mailto:25mcaa54@kristujayanti.com" className="flex items-center gap-3 text-foreground hover:text-primary transition-colors">
+                         <Mail className="w-4 h-4" />
+                         <span>25mcaa54@kristujayanti.com</span>
+                       </a>
                     </div>
                   </div>
                 </div>
